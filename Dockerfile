@@ -3,7 +3,9 @@ RUN apk --no-cache add \
 	make \
 	gcc \
 	g++ \
-	mesa \
+	mesa-dev \
+	sdl-dev \
+	dbus-dev \
 	python \
 	git
 
@@ -13,5 +15,6 @@ COPY . /app/
 WORKDIR /app/
 RUN npm i -g npm@latest-4
 RUN npm install
-RUN npm run build:web
-ENTRYPOINT python -m SimpleHTTPServer 8080
+#ENTRYPOINT sh
+#ENTRYPOINT npm run build:web
+#ENTRYPOINT python -m SimpleHTTPServer 8080
