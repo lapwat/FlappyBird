@@ -1,9 +1,17 @@
 FROM node:alpine
+RUN apk --no-cache add \
+	make \
+	gcc \
+	g++ \
+	mesa \
+	python \
+	git
 
-mkdir /app/
-COPY * /app/
+RUN mkdir /app/
+COPY . /app/
 
 WORKDIR /app/
-npm install
-npm run build:web
-which python
+RUN npm i -g npm@latest-4
+RUN npm install
+RUN npm run build:web
+ENTRYPOINT python -m SimpleHTTPServer 8080
