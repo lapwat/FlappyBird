@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  resume:
+    image: flappy_bird
+    labels:
+      - "traefik.enabled=true"
+      - "traefik.backend=flappybird"
+      - "traefik.frontend.rule=Host:flappybird.lapw.at"
+      - "traefik.port=8080"
+    networks:
+      - reverseproxy_default
+    restart: always
+
+networks:
+  reverseproxy_default:
+    external:
+      name: traefik_default

@@ -15,6 +15,5 @@ COPY . /app/
 WORKDIR /app/
 RUN npm i -g npm@latest-4
 RUN npm install
-#ENTRYPOINT sh
-#ENTRYPOINT npm run build:web
-#ENTRYPOINT python -m SimpleHTTPServer 8080
+RUN npm run build:web
+ENTRYPOINT python -m SimpleHTTPServer 8080
